@@ -54,7 +54,7 @@ class CreditRepositoryImpl implements CreditRepository {
   @override
   Future<Either<Failure, Credit>> getCredit(int id) async {
     try {
-      final credits = await this.creditLocalDataSource.query(id);
+      final credits = await this.creditLocalDataSource.query(id: id);
       return Right( credits.first );
     } on Exception {
       return Left( EmptyFailure() );

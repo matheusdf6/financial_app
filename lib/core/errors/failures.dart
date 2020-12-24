@@ -14,3 +14,5 @@ class CantCreateFailure extends Failure {}
 class NotFoundFailure extends Failure {}
 
 class EmptyFailure extends Failure {}
+
+class CacheFailure extends Failure {}

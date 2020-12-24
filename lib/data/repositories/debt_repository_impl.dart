@@ -45,7 +45,7 @@ class DebtRepositoryImpl implements DebtRepository {
   @override
   Future<Either<Failure, List<Debt>>> getAllDebts() async {
     try {
-      final debts = await this.debtLocalDataSource.query();
+      final debts = await this.debtLocalDataSource.queryAll();
       return Right(debts);
     } on Exception {
       return Left( EmptyFailure() );
@@ -55,7 +55,7 @@ class DebtRepositoryImpl implements DebtRepository {
   @override
   Future<Either<Failure, Debt>> getDebt(int id) async {
     try {
-      final debts = await this.debtLocalDataSource.query(id);
+      final debts = await this.debtLocalDataSource.queryById(id);
       return Right( debts.first );
     } on Exception {
       return Left( EmptyFailure() );

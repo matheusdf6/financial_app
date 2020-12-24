@@ -39,5 +39,7 @@ class CreditModel extends Credit {
     'creditCategory': credit.creditCategory.index,
     'description': credit.description,
     'imageUrls': credit.imageUrls,
+    'month': credit.date.month,
+    'year': credit.date.year
   };
 }

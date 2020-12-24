@@ -1,10 +1,28 @@
 import "package:sembast/sembast.dart";
 
 import '../../domain/entities/credit.dart';
+import '../../domain/enums/credit_category_enum.dart';
 import '../models/credit_model.dart';
 
 abstract class CreditLocalDataSource {
-  Future<List<Credit>> query([ int id ]) {
+
+  Future<List<Credit>> queryAll() {
+    return null;
+  }
+
+  Future<List<Credit>> queryById(int id) {
+    return null;
+  }
+
+  Future<List<Credit>> queryByMonth(int year, int month) {
+    return null;
+  }
+
+  Future<List<Credit>> queryByCategory(CreditCategory category) {
+    return null;
+  }
+
+  Future<List<Credit>> queryByMonthAndCategory(int year, int month, CreditCategory category) {
     return null;
   }
 
@@ -30,17 +48,54 @@ class CreditLocalDataSourceImpl extends CreditLocalDataSource {
     this.database,
     this.store
   });
-  
-  @override
-  Future<List<Credit>> query([ int id ]) async {
-    if( id != null && id > 0 ) {
-      final record = await this.store.record(id).get(this.database);
-      return [ CreditModel.fromJson(record) ];
-    } else {
-      final records = await this.store.find(this.database);
-      return records.map<Credit>((snapshot) => CreditModel.fromJson(snapshot as Map));
-    }
+
+  Future<List<Credit>> query({ Finder finder }) async {
+    final records = finder != null
+      ? await this.store.find(this.database, finder: finder)
+      : await this.store.find(this.database);
+        return records.map<Credit>((snapshot) => CreditModel.fromJson(snapshot as Map));
   }
+
+  @override
+  Future<List<Credit>> queryAll() {
+    return this.query();
+  }
+
+  @override
+  Future<List<Credit>> queryById(int id) {
+    return this.query( finder: Finder(
+      filter: Filter.equals('id', id)
+    ));
+  }
+
+  @override
+  Future<List<Credit>> queryByMonth(int year, int month) {
+    return this.query( finder: Finder(
+      filter: Filter.and([
+        Filter.equals('year', year),
+        Filter.equals('month', month)
+      ])
+    ));
+  }
+
+  @override
+  Future<List<Credit>> queryByCategory(CreditCategory category) {
+    return this.query( finder: Finder(
+      filter: Filter.equals('creditCategory', category.index)
+    ));
+  }
+
+  @override
+  Future<List<Credit>> queryByMonthAndCategory(int year, int month, CreditCategory category) {
+     return this.query( finder: Finder(
+      filter: Filter.and([
+        Filter.equals('year', year),
+        Filter.equals('month', month),
+        Filter.equals('creditCategory', category.index)
+      ])
+    ));
+  }
+
 
   @override
   Future<void> save(Credit credit) async {

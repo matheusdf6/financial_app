@@ -39,5 +39,7 @@ class DebtModel extends Debt {
     'debtCategory': debt.debtCategory.index,
     'description': debt.description,
     'imageUrls': debt.imageUrls,
+    'month': debt.date.month,
+    'year': debt.date.year
   };
 }
