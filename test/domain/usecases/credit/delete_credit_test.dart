@@ -11,7 +11,7 @@ class MockCreditRepository extends Mock
 void main() {
   DeleteCredit deleteCredit;
   MockCreditRepository mockCreditRepository;
-  String tId = '1';
+  int tId = 1;
 
 
   setUp(() {

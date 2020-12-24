@@ -16,7 +16,7 @@ void main() {
   MockDebtRepository mockDebtRepository;
   List<Debt> tDebtList = [
     Debt(
-      id: '1',
+      id: 1,
       amount: 200.0,
       debtCategory: DebtCategory.Food,
       date: DateTime(2020,01,11),
@@ -24,7 +24,7 @@ void main() {
       imageUrls: []
     ),
     Debt(
-      id: '2',
+      id: 2,
       amount: 200.0,
       debtCategory: DebtCategory.Food,
       date: DateTime(2020,01,11),

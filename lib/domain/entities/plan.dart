@@ -1,7 +1,8 @@
 import 'package:equatable/equatable.dart';
+import "package:meta/meta.dart";
 
 import '../enums/plan_category_enum.dart';
-import 'entry.dart';
+import 'credit.dart';
 
 class Plan extends Equatable {
   final String id;
@@ -9,14 +10,14 @@ class Plan extends Equatable {
   final double currentAmmount;
   final PlanCategory planCategory;
   final DateTime date;
-  final List<Entry> entries;
+  final List<Credit> entries;
 
   Plan({
-    this.id, 
-    this.plannedAmount, 
-    this.currentAmmount, 
-    this.planCategory, 
-    this.date, 
+    @required this.id, 
+    @required this.plannedAmount, 
+    @required this.currentAmmount, 
+    @required this.planCategory, 
+    @required this.date, 
     this.entries
   });
 

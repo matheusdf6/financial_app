@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 abstract class Entry extends Equatable {
-  final String id;
+  final int id;
   final DateTime date;
   final double amount;
   final String description;

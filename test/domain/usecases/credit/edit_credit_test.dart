@@ -14,7 +14,7 @@ void main() {
   EditCredit editCredit;
   MockCreditRepository mockCreditRepository;
   Credit tCredit = Credit(
-    id: '1',
+    id: 1,
     amount: 200.0,
     creditCategory: CreditCategory.Bank,
     date: DateTime(2020,01,11),

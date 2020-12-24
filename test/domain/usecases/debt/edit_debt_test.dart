@@ -14,7 +14,7 @@ void main() {
   EditDebt editDebt;
   MockDebtRepository mockDebtRepository;
   Debt tDebt = Debt(
-    id: '1',
+    id: 1,
     amount: 200.0,
     debtCategory: DebtCategory.Food,
     date: DateTime(2020,01,11),

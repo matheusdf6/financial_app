@@ -17,7 +17,7 @@ class DeletePlan extends UseCase<bool, DeletePlanParams> {
 }
 
 class DeletePlanParams {
-  final String id;
+  final int id;
 
   DeletePlanParams({
     @required this.id

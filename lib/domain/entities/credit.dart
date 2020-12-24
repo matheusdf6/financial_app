@@ -8,7 +8,7 @@ class Credit extends Entry {
 
   Credit({
     @required this.creditCategory,
-    @required String id,
+    @required int id,
     @required DateTime date,
     @required double amount,
     String description,

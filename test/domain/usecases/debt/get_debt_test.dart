@@ -13,9 +13,9 @@ class MockDebtRepository extends Mock
 void main() {
   GetDebt getDebt;
   MockDebtRepository mockDebtRepository;
-  String tId = '1';
+  int tId = 1;
   Debt tDebt = Debt(
-    id: '1',
+    id: 1,
     amount: 200.0,
     debtCategory: DebtCategory.Food,
     date: DateTime(2020,01,11),

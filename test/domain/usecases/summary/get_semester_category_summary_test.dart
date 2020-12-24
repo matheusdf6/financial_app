@@ -1,18 +1,18 @@
 import 'package:dartz/dartz.dart';
-import 'package:financial_app/domain/entities/summary_list.dart';
-import 'package:financial_app/domain/usecases/summary/get_semester_summary.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:financial_app/core/usecase/usecase.dart';
 import 'package:financial_app/domain/entities/summary.dart';
 import 'package:financial_app/domain/repositories/summary_repository.dart';
+import 'package:financial_app/domain/entities/summary_list.dart';
+import 'package:financial_app/domain/enums/debt_category_enum.dart';
+import 'package:financial_app/domain/usecases/summary/get_semester_category_summary.dart';
 
 class MockSummaryRepository extends Mock
   implements SummaryRepository {}
 
 void main() {
-  GetSemesterSummary getSemesterSummary;
+  GetCategorySemesterSummary getCategorySemesterSummary;
   MockSummaryRepository mockSummaryRepository;
   SummaryList tSummaryList = SummaryList();
   tSummaryList.addAll([
@@ -33,7 +33,7 @@ void main() {
 
   setUp(() {
     mockSummaryRepository = MockSummaryRepository();
-    getSemesterSummary = GetSemesterSummary(mockSummaryRepository);
+    getCategorySemesterSummary = GetCategorySemesterSummary(mockSummaryRepository);
   });
 
   setMockSummaryRepositoryReturnOk() {
@@ -47,7 +47,9 @@ void main() {
       // arrange
       setMockSummaryRepositoryReturnOk();
       // act
-      final result = await getSemesterSummary(NoParams());
+      final result = await getCategorySemesterSummary(GetCategorySemesterSummaryParams(
+        category: DebtCategory.Food
+      ));
       // assert
       expect(result, Right(tSummaryList));
     },

@@ -5,8 +5,8 @@ import '../entities/debt.dart';
 
 abstract class DebtRepository {
   Future<Either<Failure,List<Debt>>> getAllDebts();
-  Future<Either<Failure,Debt>> getDebt(String id);
+  Future<Either<Failure,Debt>> getDebt(int id);
   Future<Either<Failure,bool>> createDebt(Debt debt);
   Future<Either<Failure,bool>> editDebt(Debt debt);
-  Future<Either<Failure,bool>> deleteDebt(String id);
+  Future<Either<Failure,bool>> deleteDebt(int id);
 }

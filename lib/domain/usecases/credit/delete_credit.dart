@@ -17,7 +17,7 @@ class DeleteCredit extends UseCase<bool, DeleteCreditParams> {
 }
 
 class DeleteCreditParams {
-  final String id;
+  final int id;
 
   DeleteCreditParams({
     @required this.id

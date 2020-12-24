@@ -16,7 +16,7 @@ void main() {
   MockCreditRepository mockCreditRepository;
   List<Credit> tCreditList = [
     Credit(
-      id: '1',
+      id: 1,
       amount: 200.0,
       creditCategory: CreditCategory.Bank,
       date: DateTime(2020,01,11),
@@ -24,7 +24,7 @@ void main() {
       imageUrls: []
     ),
     Credit(
-      id: '2',
+      id: 2,
       amount: 200.0,
       creditCategory: CreditCategory.Bank,
       date: DateTime(2020,01,11),

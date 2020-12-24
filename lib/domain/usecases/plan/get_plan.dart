@@ -18,7 +18,7 @@ class GetPlan extends UseCase<Plan, GetPlanParams> {
 }
 
 class GetPlanParams {
-  final String id;
+  final int id;
 
   GetPlanParams({
     @required this.id

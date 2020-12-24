@@ -5,8 +5,8 @@ import '../entities/plan.dart';
 
 abstract class PlanRepository {
   Future<Either<Failure,List<Plan>>> getAllPlans();
-  Future<Either<Failure,Plan>> getPlan(String id);
+  Future<Either<Failure,Plan>> getPlan(int id);
   Future<Either<Failure,bool>> createPlan(Plan plan);
   Future<Either<Failure,bool>> editPlan(Plan plan);
-  Future<Either<Failure,bool>> deletePlan(String id);
+  Future<Either<Failure,bool>> deletePlan(int id);
 }

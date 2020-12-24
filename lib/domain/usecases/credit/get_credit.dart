@@ -18,7 +18,7 @@ class GetCredit extends UseCase<Credit, GetCreditParams> {
 }
 
 class GetCreditParams {
-  final String id;
+  final int id;
 
   GetCreditParams({
     @required this.id

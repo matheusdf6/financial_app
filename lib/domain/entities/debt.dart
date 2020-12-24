@@ -8,7 +8,7 @@ class Debt extends Entry {
 
   Debt({
     @required this.debtCategory,
-    @required String id,
+    @required int id,
     @required DateTime date,
     @required double amount,
     String description,

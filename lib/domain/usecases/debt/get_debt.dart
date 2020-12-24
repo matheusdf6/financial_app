@@ -18,7 +18,7 @@ class GetDebt extends UseCase<Entry, GetDebtParams> {
 }
 
 class GetDebtParams {
-  final String id;
+  final int id;
 
   GetDebtParams({
     @required this.id
