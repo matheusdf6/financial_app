@@ -7,7 +7,7 @@ class DebtModel extends Debt {
 
   DebtModel({
     @required DebtCategory debtCategory,
-    @required String id,
+    @required int id,
     @required DateTime date,
     @required double amount,
     String description,
@@ -23,7 +23,7 @@ class DebtModel extends Debt {
 
   factory DebtModel.fromJson(Map<String, dynamic> map) {
     return DebtModel(
-      id: map['id'] as String,
+      id: map['id'] as int,
       date: DateTime.parse(map['date']),
       amount: map['amount'] as double,
       debtCategory: DebtCategory.values[map['debtCategory']],
@@ -32,12 +32,12 @@ class DebtModel extends Debt {
     );
   }
   
-  Map<String, dynamic> toJson(DebtModel debt) => {
+  static Map<String, dynamic> toJson(DebtModel debt) => {
     'id': debt.id,
     'date': debt.date.toIso8601String(),
-    'amount': amount,
-    'debtCategory': debtCategory.index,
-    'description': description,
-    'imageUrls': imageUrls,
+    'amount': debt.amount,
+    'debtCategory': debt.debtCategory.index,
+    'description': debt.description,
+    'imageUrls': debt.imageUrls,
   };
 }

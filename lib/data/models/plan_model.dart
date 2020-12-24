@@ -9,7 +9,7 @@ import '../../domain/enums/credit_category_enum.dart';
 class PlanModel extends Plan {
 
   PlanModel({
-    @required String id,
+    @required int id,
     @required double plannedAmount,
     @required double currentAmmount,
     @required PlanCategory planCategory,
@@ -26,7 +26,7 @@ class PlanModel extends Plan {
 
   factory PlanModel.fromJson(Map<String, dynamic> map) {
     return PlanModel(
-      id: map['id'] as String,
+      id: map['id'] as int,
       plannedAmount: map['plannedAmount'] as double,
       currentAmmount: map['currentAmmount'] as double,
       planCategory: PlanCategory.values[map['planCategory']], 
@@ -35,12 +35,12 @@ class PlanModel extends Plan {
     );
   }
   
-  Map<String, dynamic> toJson(PlanModel plan) => {
+  static Map<String, dynamic> toJson(PlanModel plan) => {
     'id': plan.id,
     'plannedAmount': plan.plannedAmount,
     'currentAmmount': plan.currentAmmount,
-    'planCategory': planCategory.index, 
+    'planCategory': plan.planCategory.index, 
     'date': plan.date.toIso8601String(),
-    'entries': entries.map<String>((entry) => entry.id)
+    'entries': plan.entries.map<int>((entry) => entry.id)
   };
 }

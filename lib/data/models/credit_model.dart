@@ -7,7 +7,7 @@ class CreditModel extends Credit {
 
   CreditModel({
     @required CreditCategory creditCategory,
-    @required String id,
+    @required int id,
     @required DateTime date,
     @required double amount,
     String description,
@@ -23,7 +23,7 @@ class CreditModel extends Credit {
 
   factory CreditModel.fromJson(Map<String, dynamic> map) {
     return CreditModel(
-      id: map['id'] as String,
+      id: map['id'] as int,
       date: DateTime.parse(map['date']),
       amount: map['amount'] as double,
       creditCategory: CreditCategory.values[map['creditCategory']],
@@ -32,7 +32,7 @@ class CreditModel extends Credit {
     );
   }
   
-  Map<String, dynamic> toJson(CreditModel credit) => {
+  static Map<String, dynamic> toJson(CreditModel credit) => {
     'id': credit.id,
     'date': credit.date.toIso8601String(),
     'amount': credit.amount,

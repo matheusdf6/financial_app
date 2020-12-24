@@ -5,7 +5,7 @@ import '../enums/plan_category_enum.dart';
 import 'credit.dart';
 
 class Plan extends Equatable {
-  final String id;
+  final int id;
   final double plannedAmount;
   final double currentAmmount;
   final PlanCategory planCategory;
