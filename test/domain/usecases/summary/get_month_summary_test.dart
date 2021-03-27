@@ -2,24 +2,17 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
-import 'package:financial_app/core/usecase/usecase.dart';
 import 'package:financial_app/domain/entities/summary.dart';
 import 'package:financial_app/domain/repositories/summary_repository.dart';
 import 'package:financial_app/domain/usecases/summary/get_month_summary.dart';
 
-class MockSummaryRepository extends Mock
-  implements SummaryRepository {}
+class MockSummaryRepository extends Mock implements SummaryRepository {}
 
 void main() {
   GetMonthSummary getMonthSummary;
   MockSummaryRepository mockSummaryRepository;
   Summary tSummary = Summary(
-    year: 2020,
-    month: 11,
-    ammountCredits: 2000.0,
-    ammountDebts: 1000.0
-  );
-
+      year: 2020, month: 11, ammountCredits: 2000.0, ammountDebts: 1000.0);
 
   setUp(() {
     mockSummaryRepository = MockSummaryRepository();
@@ -27,7 +20,7 @@ void main() {
   });
 
   setMockSummaryRepositoryReturnOk() {
-      when(mockSummaryRepository.getMonthSummary())
+    when(mockSummaryRepository.getMonthSummary(2020, 11))
         .thenAnswer((_) async => Right(tSummary));
   }
 
@@ -37,7 +30,8 @@ void main() {
       // arrange
       setMockSummaryRepositoryReturnOk();
       // act
-      final result = await getMonthSummary(NoParams());
+      final result =
+          await getMonthSummary(GetMonthSummaryParams(year: 2020, month: 11));
       // assert
       expect(result, Right(tSummary));
     },
