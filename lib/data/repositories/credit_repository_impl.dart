@@ -7,9 +7,7 @@ import 'package:financial_app/domain/repositories/credit_repository.dart';
 class CreditRepositoryImpl implements CreditRepository {
   final CreditLocalDataSource creditLocalDataSource;
 
-  CreditRepositoryImpl({
-    this.creditLocalDataSource
-  });
+  CreditRepositoryImpl({this.creditLocalDataSource});
 
   @override
   Future<Either<Failure, bool>> createCredit(Credit credit) async {
@@ -17,7 +15,7 @@ class CreditRepositoryImpl implements CreditRepository {
       await this.creditLocalDataSource.save(credit);
       return Right(true);
     } on Exception {
-      return Left( CantCreateFailure() );
+      return Left(CantCreateFailure());
     }
   }
 
@@ -27,7 +25,7 @@ class CreditRepositoryImpl implements CreditRepository {
       await this.creditLocalDataSource.delete(id);
       return Right(true);
     } on Exception {
-      return Left( NotFoundFailure() );
+      return Left(NotFoundFailure());
     }
   }
 
@@ -37,28 +35,27 @@ class CreditRepositoryImpl implements CreditRepository {
       await this.creditLocalDataSource.edit(credit);
       return Right(true);
     } on Exception {
-      return Left( NotFoundFailure() );
+      return Left(NotFoundFailure());
     }
   }
 
   @override
   Future<Either<Failure, List<Credit>>> getAllCredits() async {
     try {
-      final credits = await this.creditLocalDataSource.query();
+      final credits = await this.creditLocalDataSource.queryAll();
       return Right(credits);
     } on Exception {
-      return Left( EmptyFailure() );
+      return Left(EmptyFailure());
     }
   }
 
   @override
   Future<Either<Failure, Credit>> getCredit(int id) async {
     try {
-      final credits = await this.creditLocalDataSource.query(id: id);
-      return Right( credits.first );
+      final credits = await this.creditLocalDataSource.queryById(id);
+      return Right(credits.first);
     } on Exception {
-      return Left( EmptyFailure() );
+      return Left(EmptyFailure());
     }
   }
-
 }
