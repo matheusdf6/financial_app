@@ -45,6 +45,14 @@ class AppState extends State<App> {
         : null;
   }
 
+  _getAppBarTitle(BuildContext context) {
+    return currentTab != 0
+        ? Text(tabs[currentTab].tabName, style: TextStyle(
+          color: Theme.of(context).primaryColor
+        ))
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -52,6 +60,8 @@ class AppState extends State<App> {
           appBar: AppBar(
               elevation: 0.0,
               shape: _getAppBarShape(),
+              title: _getAppBarTitle(context),
+              centerTitle: true,
               actions: [
                 IconButton(
                     icon: Icon(Icons.settings,

@@ -22,7 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [UserGreetings()],
+        children: [
+          UserGreetings()
+        ],
       ),
     );
   }

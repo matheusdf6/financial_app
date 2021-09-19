@@ -6,10 +6,10 @@ import '../../../core/usecase/usecase.dart';
 import 'package:financial_app/domain/entities/user.dart';
 import '../../repositories/user_repository.dart';
 
-class GetUser extends UseCase<User, SaveUserParams> {
+class SaveUser extends UseCase<User, SaveUserParams> {
   final UserRepository userRepository;
 
-  GetUser(this.userRepository);
+  SaveUser(this.userRepository);
 
   @override
   Future<Either<Failure, User>> call(SaveUserParams params) async {
